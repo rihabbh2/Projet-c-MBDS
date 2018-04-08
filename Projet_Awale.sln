@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projet_Awale", "Projet_Awale\Projet_Awale.csproj", "{CEFB535B-6F6E-4FFB-B627-B75440FD6784}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CEFB535B-6F6E-4FFB-B627-B75440FD6784}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEFB535B-6F6E-4FFB-B627-B75440FD6784}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEFB535B-6F6E-4FFB-B627-B75440FD6784}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEFB535B-6F6E-4FFB-B627-B75440FD6784}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0855CF1D-EC79-4481-8585-DB99CF8E528C}
+	EndGlobalSection
+EndGlobal
