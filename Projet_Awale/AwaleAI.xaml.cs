@@ -113,7 +113,7 @@ namespace Projet_Awale
             int total2 = Plateau2[a].NbrBilles;
             Plateau2[a].Jouer();
             int b = -1;
-            for (int k = total; k > 0; k--)
+            for (int k = total2; k > 0; k--)
             {
                 a = a - 1;
                 if (a > 0)

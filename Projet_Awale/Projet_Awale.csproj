@@ -56,8 +56,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GuestGame.xaml.cs">
+      <DependentUpon>GuestGame.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Heberger.xaml.cs">
       <DependentUpon>Heberger.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HostGame.xaml.cs">
+      <DependentUpon>HostGame.xaml</DependentUpon>
     </Compile>
     <Compile Include="Rejoindre.xaml.cs">
       <DependentUpon>Rejoindre.xaml</DependentUpon>
@@ -77,11 +83,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GuestGame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Heberger.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="HoleControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HostGame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

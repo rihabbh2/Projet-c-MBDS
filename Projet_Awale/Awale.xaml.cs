@@ -12,6 +12,10 @@ namespace Projet_Awale
     /// </summary>
     public partial class Awale : Window , INotifyPropertyChanged
     {
+
+        public Boolean tour1;
+        public Boolean tour2;
+
         public String joueur1 { get; set; }
 
         private int _score1;
@@ -44,6 +48,8 @@ namespace Projet_Awale
             Score1 = j1.Score;
             joueur2 = j2.Nom;
             Score2 = j2.Score;
+            tour1 = true;
+            tour2 = false;
             Plateau1 = new ObservableCollection<HoleControl>();
             Plateau2 = new ObservableCollection<HoleControl>();
             for (int i=6; i>0; i--)
@@ -59,89 +65,102 @@ namespace Projet_Awale
 
         private void ListBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int i = Me.SelectedIndex;
-            int total = Plateau1[i].NbrBilles; 
-            Plateau1[i].Jouer();
-            int j = 6;
-            for (int k = total; k > 0; k--)
+            if (tour1 == true)
             {
-                i = i + 1;
-                if (i < 6)
+                int i = Me.SelectedIndex;
+                int total = Plateau1[i].NbrBilles;
+                Plateau1[i].Jouer();
+                int j = 6;
+                for (int k = total; k > 0; k--)
                 {
-                    Plateau1[i].Distribuer();
-                }
-                else
-                {
-                    j = j - 1;
-                    if (j < 6 && j>-1)
+                    i = i + 1;
+                    if (i < 6)
                     {
-                        Plateau2[j].Distribuer();
-                        if (Plateau2[j].NbrBilles == 2)
-                        {
-                            Plateau2[j].NbrBilles = 0;
-                            this.Score1 = this.Score1 + 2;
-                        }
-                        else if (Plateau2[j].NbrBilles == 3)
-                        {
-                            Plateau2[j].NbrBilles = 0;
-                            this.Score1 = this.Score1 + 3;
-                        }
-                        if (Score1 > 24)
-                        {
-                            MessageBox.Show(joueur1 + " a gagné");
-                            this.Close();
-                        }
+                        Plateau1[i].Distribuer();
                     }
                     else
                     {
-                        i = 1;
-                        j = -1;
+                        j = j - 1;
+                        if (j < 6 && j > -1)
+                        {
+                            Plateau2[j].Distribuer();
+                            if (Plateau2[j].NbrBilles == 2)
+                            {
+                                Plateau2[j].NbrBilles = 0;
+                                this.Score1 = this.Score1 + 2;
+                            }
+                            else if (Plateau2[j].NbrBilles == 3)
+                            {
+                                Plateau2[j].NbrBilles = 0;
+                                this.Score1 = this.Score1 + 3;
+                            }
+                            if (Score1 > 24)
+                            {
+                                MessageBox.Show(joueur1 + " a gagné");
+                                this.Close();
+                            }
+                        }
+                        else
+                        {
+                            i = 1;
+                            j = -1;
+                        }
                     }
                 }
             }
+            tour1 = false;
+            tour2 = true; 
         }
 
 
         private void ListBox2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int i = Ennemy.SelectedIndex;
-            int total = Plateau2[i].NbrBilles;
-            Plateau2[i].Jouer();
-            int j = -1;
-            for (int k = total; k > 0; k--)
+            if (tour2 == true)
             {
-                i = i - 1;
-                if (i >= 0) { 
-                Plateau2[i].Distribuer();
-                } else
+                int i = Ennemy.SelectedIndex;
+                int total = Plateau2[i].NbrBilles;
+                Plateau2[i].Jouer();
+                int j = -1;
+                for (int k = total; k > 0; k--)
                 {
-                    j = j + 1;
-                    if (j < 6)
+                    i = i - 1;
+                    if (i >= 0)
                     {
-                        Plateau1[j].Distribuer();
-                        if (Plateau1[j].NbrBilles == 2)
+                        Plateau2[i].Distribuer();
+                    }
+                    else
+                    {
+                        j = j + 1;
+                        if (j < 6)
                         {
-                            Plateau1[j].NbrBilles = 0;
-                            this.Score2 = this.Score2 + 2;
-                        }
-                        else if (Plateau1[j].NbrBilles == 3)
-                        {
-                            Plateau1[j].NbrBilles = 0;
-                            this.Score2 = this.Score2 + 3;
-                        }
+                            Plateau1[j].Distribuer();
+                            if (Plateau1[j].NbrBilles == 2)
+                            {
+                                Plateau1[j].NbrBilles = 0;
+                                this.Score2 = this.Score2 + 2;
+                            }
+                            else if (Plateau1[j].NbrBilles == 3)
+                            {
+                                Plateau1[j].NbrBilles = 0;
+                                this.Score2 = this.Score2 + 3;
+                            }
 
-                        if (Score2 > 24)
-                        {
-                            MessageBox.Show(joueur2 + " a gagné");
-                            this.Close();
+                            if (Score2 > 24)
+                            {
+                                MessageBox.Show(joueur2 + " a gagné");
+                                this.Close();
+                            }
                         }
-                    } else
-                    {
-                        i=1 ;
-                        j = -1;
+                        else
+                        {
+                            i = 1;
+                            j = -1;
+                        }
                     }
                 }
             }
+            tour1 = true;
+            tour2 = false;
         }
 
         private void NotifyPropertyChanged(String propertyName)

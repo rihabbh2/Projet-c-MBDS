@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Ben Hamouda\source\repos\Projet_Awale\Projet_Awale\obj\Debug\
+C:\Users\Ben Hamouda\Documents\GitHub\Projet-c-MBDS\Projet_Awale\obj\Debug\
 Projet_Awale
 none
 false
 DEBUG;TRACE
-C:\Users\Ben Hamouda\source\repos\Projet_Awale\Projet_Awale\App.xaml
-9560557767
+C:\Users\Ben Hamouda\Documents\GitHub\Projet-c-MBDS\Projet_Awale\App.xaml
+111240472180
 
-211585848916
+23-280079921
 151984215308
-Acceuil.xaml;Awale.xaml;AwaleAI.xaml;Heberger.xaml;HoleControl.xaml;Joueur2.xaml;MainWindow.xaml;Rejoindre.xaml;ScoreControl.xaml;
+Acceuil.xaml;Awale.xaml;AwaleAI.xaml;GuestGame.xaml;Heberger.xaml;HoleControl.xaml;HostGame.xaml;Joueur2.xaml;MainWindow.xaml;Rejoindre.xaml;ScoreControl.xaml;
 
 False
 
