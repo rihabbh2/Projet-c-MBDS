@@ -96,14 +96,14 @@ namespace Projet_Awale
                         }
                         if (Score1 > 24)
                         {
-                            MessageBox.Show(joueur1 + " a gagné");
+                            MessageBox.Show("Vous avez gagné" + Score1 + " vs " + Score2);
                             this.Close();
                         }
-                    }
-                    else
-                    {
-                        i = 0;
-                        j = -1;
+                        if (j == 0)
+                        {
+                            i = 0;
+                            j = 6;
+                        }
                     }
                 }
             }
@@ -139,14 +139,14 @@ namespace Projet_Awale
 
                         if (Score2 > 24)
                         {
-                            MessageBox.Show("L'ordinteur a gagné");
+                            MessageBox.Show("L'ordinteur a gagné "+Score2 +" vs "+Score1);
                             this.Close();
                         }
-                    }
-                    else
-                    {
-                        a = 0;
-                        b = -1;
+                        if (j == 5)
+                        {
+                            i = 6;
+                            j = -1;
+                        }
                     }
                 }
             }

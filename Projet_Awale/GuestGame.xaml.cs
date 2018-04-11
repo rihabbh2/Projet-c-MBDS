@@ -44,15 +44,84 @@ namespace Projet_Awale
             Joueur j2 = Gestion.getInstance().Joueur2;
             joueur1 = j1.Nom;
             Score1 = j1.Score;
-           // joueur2 = j2.Nom;
+            // joueur2 = j2.Nom;
             Score2 = 0;
-            tour =false; 
+            tour = false;
             Plateau1 = new ObservableCollection<HoleControl>();
             Plateau2 = new ObservableCollection<HoleControl>();
             for (int i = 6; i > 0; i--)
             {
                 Plateau1.Add(new HoleControl());
                 Plateau2.Add(new HoleControl());
+            }
+            UdpClient listener = new UdpClient(1500);
+            IPAddress target = IPAddress.Parse("127.0.0.1");
+            IPEndPoint ep = new IPEndPoint(target, 1500);
+
+            try
+            {
+                while (tour == false)
+                {
+
+                    byte[] bytes = listener.Receive(ref ep);
+
+
+                    tour = true;
+
+                    String attack = Encoding.ASCII.GetString(bytes, 0, bytes.Length);
+                    int a;
+                    Int32.TryParse(attack, out a);
+                    int total2 = Plateau1[a].NbrBilles;
+                    Plateau1[a].Jouer();
+                    Console.WriteLine(Plateau1[a].NbrBilles);
+                    int b = 6;
+                    for (int k = total2; k > 0; k--)
+                    {
+                        a = a + 1;
+                        if (a < 6)
+                        {
+                            Plateau1[a].Distribuer();
+                        }
+                        else
+                        {
+                            b = b - 1;
+                            if (b < 6 && b > -1)
+                            {
+                                Plateau2[b].Distribuer();
+                                if (Plateau2[b].NbrBilles == 2)
+                                {
+                                    Plateau2[b].NbrBilles = 0;
+                                    this.Score1 = this.Score1 + 2;
+                                }
+                                else if (Plateau2[b].NbrBilles == 3)
+                                {
+                                    Plateau2[b].NbrBilles = 0;
+                                    this.Score1 = this.Score1 + 3;
+                                }
+
+                                if (Score1 > 24)
+                                {
+                                    MessageBox.Show("Votre adversaire a gagné");
+                                    this.Close();
+                                }
+                            }
+                            else
+                            {
+                                a = 0;
+                                b = 6;
+                            }
+                        }
+                    }
+                }
+
+            }
+            catch (Exception e1)
+            {
+                Console.WriteLine(e1.ToString());
+            }
+            finally
+            {
+                listener.Close();
             }
             this.DataContext = this;
 
@@ -104,64 +173,66 @@ namespace Projet_Awale
                                 MessageBox.Show("Vous avez a gagné");
                                 this.Close();
                             }
+                            if (j == 5)
+                            {
+                                i = 6;
+                                j = -1;
+                            }
                         }
-                        else
-                        {
-                            i = 1;
-                            j = -1;
-                        }
+                      
                     }
                     Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-                    IPAddress target = IPAddress.Parse("127.0.0.1");
-                    IPEndPoint ep = new IPEndPoint(target, 2323);
+                    IPAddress target1 = IPAddress.Parse("127.0.0.1");
+                    IPEndPoint ep1 = new IPEndPoint(target1, 2323);
 
                     byte[] msg = Encoding.ASCII.GetBytes(i.ToString());
-                    s.SendTo(msg, ep);
+                    s.SendTo(msg, ep1);
                     tour = false;
+
                 }
-            } else
-            {
-                UdpClient listener = new UdpClient(2323);
+          
+                UdpClient listener = new UdpClient(1500);
                 IPAddress target = IPAddress.Parse("127.0.0.1");
-                IPEndPoint ep = new IPEndPoint(target, 2323);
+                IPEndPoint ep = new IPEndPoint(target, 1500);
 
                 try
                 {
                     while (tour == false)
                     {
-                      
+
                         byte[] bytes = listener.Receive(ref ep);
 
-                     
+
                         tour = true;
 
-                       String attack = Encoding.ASCII.GetString(bytes, 0, bytes.Length);
+                        String attack = Encoding.ASCII.GetString(bytes, 0, bytes.Length);
                         int a;
                         Int32.TryParse(attack, out a);
                         int total2 = Plateau1[a].NbrBilles;
                         Plateau1[a].Jouer();
-                        int b = -1;
+                        Console.WriteLine(Plateau1[a].NbrBilles);
+                        int b = 6;
                         for (int k = total2; k > 0; k--)
                         {
-                            a = a +1 ;
-                            if (a > 6)
+                            a = a + 1;
+                            if (a < 6)
                             {
                                 Plateau1[a].Distribuer();
                             }
                             else
                             {
                                 b = b - 1;
-                                if (b > 0)
+                                if (b < 6 && b > -1)
                                 {
-                                    Plateau1[b].Distribuer();
-                                    if (Plateau1[b].NbrBilles == 2)
+                                    Plateau2[b].Distribuer();
+                                    if (Plateau2[b].NbrBilles == 2)
                                     {
-                                        Plateau1[b].NbrBilles = 0;
+                                        Plateau2[b].NbrBilles = 0;
                                         this.Score1 = this.Score1 + 2;
                                     }
-                                    else if (Plateau1[b].NbrBilles == 3)
+                                    else if (Plateau2[b].NbrBilles == 3)
                                     {
-                                        Plateau1[b].NbrBilles = 0;
+                                        Plateau2[b].NbrBilles = 0;
                                         this.Score1 = this.Score1 + 3;
                                     }
 
@@ -170,12 +241,13 @@ namespace Projet_Awale
                                         MessageBox.Show("Votre adversaire a gagné");
                                         this.Close();
                                     }
+                                    if (j == 0)
+                                    {
+                                        i = 0;
+                                        j = 6;
+                                    }
                                 }
-                                else
-                                {
-                                    a = 0;
-                                    b = -1;
-                                }
+                               
                             }
                         }
                     }

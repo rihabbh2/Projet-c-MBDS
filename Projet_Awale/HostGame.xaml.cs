@@ -104,33 +104,33 @@ namespace Projet_Awale
                                 MessageBox.Show(joueur1 + " a gagné");
                                 this.Close();
                             }
+                            if (j == 0)
+                            {
+                                i = 0;
+                                j = 6;
+                            }
                         }
-                        else
-                        {
-                            i = 1;
-                            j = -1;
-                        }
+                       
                     }
                 }
                 Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
                 IPAddress target = IPAddress.Parse("127.0.0.1");
-                IPEndPoint ep = new IPEndPoint(target, 2323);
+                IPEndPoint ep = new IPEndPoint(target, 1500);
 
-                byte[] msg = Encoding.ASCII.GetBytes(i.ToString());
+                byte[] msg = Encoding.ASCII.GetBytes(Me.SelectedIndex.ToString());
                 s.SendTo(msg, ep);
                 tour = false;
-            } else
-            {
+        
                 UdpClient listener = new UdpClient(2323);
-                IPAddress target = IPAddress.Parse("127.0.0.1");
-                IPEndPoint ep = new IPEndPoint(target, 2323);
+               // IPAddress target = IPAddress.Parse("127.0.0.1");
+                IPEndPoint ep1= new IPEndPoint(target, 2323);
 
                 try
                 {
                     while (tour == false)
                     {
 
-                        byte[] bytes = listener.Receive(ref ep);
+                        byte[] bytes = listener.Receive(ref ep1);
 
 
                         tour = true;
@@ -171,10 +171,10 @@ namespace Projet_Awale
                                         this.Close();
                                     }
                                 }
-                                else
+                                if (j == 5)
                                 {
-                                    a = 0;
-                                    b = -1;
+                                    i = 6;
+                                    j = -1;
                                 }
                             }
                         }

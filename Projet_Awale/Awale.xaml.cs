@@ -98,13 +98,13 @@ namespace Projet_Awale
                             {
                                 MessageBox.Show(joueur1 + " a gagné");
                                 this.Close();
+                            } if (j == 0)
+                            {
+                                i = 0;
+                                j = 6;
                             }
                         }
-                        else
-                        {
-                            i = 1;
-                            j = -1;
-                        }
+                       
                     }
                 }
             }
@@ -149,13 +149,13 @@ namespace Projet_Awale
                             {
                                 MessageBox.Show(joueur2 + " a gagné");
                                 this.Close();
+                            } if (j == 5)
+                            {
+                                i = 6;
+                                j = -1;
                             }
                         }
-                        else
-                        {
-                            i = 1;
-                            j = -1;
-                        }
+                       
                     }
                 }
             }
