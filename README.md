@@ -3,9 +3,12 @@ Jeu Awale en c#
 
 Fait : 
 
-Partie locale ‡ 2 ;
-Patie seule avec un IA (random)
+- Partie locale √† 2 ;
+- Patie seule avec un IA (random)
 
 A terminer :
 
-Partie ‡ 2 en rÈseau ; 
+- Partie √† 2 en r√©seau (manque choix de l'adresse IP)
+
+
+Pour lancer une partie en r√©seau : un utilisateur doit d'abord cliquer sur "se connecter √† une partie" , ensuite un autre sur heberger la partie (l'hergeur est celui qui commence la partie)
