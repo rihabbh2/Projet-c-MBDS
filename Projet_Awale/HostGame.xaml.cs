@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace Projet_Awale
 {
@@ -46,6 +47,8 @@ namespace Projet_Awale
         }
         public ObservableCollection<HoleControl> Plateau1 { get; set; }
         public ObservableCollection<HoleControl> Plateau2 { get; set; }
+        public String path { get; set; }
+
 
         public HostGame(string j2)
         {
@@ -63,6 +66,12 @@ namespace Projet_Awale
             {
                 Plateau1.Add(new HoleControl());
                 Plateau2.Add(new HoleControl());
+            }
+            path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Score.txt");
+            using (System.IO.StreamWriter file =
+                                 new System.IO.StreamWriter(@path, true))
+            {
+                file.WriteLine(DateTime.Now.ToString("MM/dd/yyyy h:mm tt"));
             }
             this.DataContext = this;
 
@@ -102,6 +111,11 @@ namespace Projet_Awale
                             if (Score1 > 24)
                             {
                                 MessageBox.Show(joueur1 + " a gagné");
+                                using (System.IO.StreamWriter file =
+                        new System.IO.StreamWriter(@path, true))
+                                {
+                                    file.WriteLine("Online : Vous a gagné" + Score1 + " vs " + Score2);
+                                }
                                 this.Close();
                             }
                             if (j == 0)
@@ -167,7 +181,12 @@ namespace Projet_Awale
 
                                     if (Score2 > 24)
                                     {
-                                        MessageBox.Show("Votre adversaire a gagné");
+                                        MessageBox.Show("Votre adversaire a gagné" + Score1 + " vs " + Score2);
+                                        using (System.IO.StreamWriter file =
+                           new System.IO.StreamWriter(@path, true))
+                                        {
+                                            file.WriteLine("Online : Votre adversaire a gagné" + Score1 + " vs " + Score2);
+                                        }
                                         this.Close();
                                     }
                                 }

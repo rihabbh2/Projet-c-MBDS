@@ -62,6 +62,9 @@
     <Compile Include="Heberger.xaml.cs">
       <DependentUpon>Heberger.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Historique.xaml.cs">
+      <DependentUpon>Historique.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HostGame.xaml.cs">
       <DependentUpon>HostGame.xaml</DependentUpon>
     </Compile>
@@ -88,6 +91,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Heberger.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Historique.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -168,6 +175,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Score.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -51,6 +51,12 @@ namespace Projet_Awale
             var windowC = new Rejoindre();
             windowC.Show();
         }
+
+        private void historique(object sender, RoutedEventArgs e)
+        {
+            var windowh = new Historique();
+            windowh.Show();
+        }
     }
 }
 

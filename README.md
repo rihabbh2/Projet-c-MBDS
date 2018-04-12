@@ -1,10 +1,12 @@
-# Projet-c-MBDS
+﻿# Projet-c-MBDS
 Jeu Awale en c#
 
 Fait : 
 
 - Partie locale à 2 ;
-- Patie seule avec un IA (random)
+- Patie seule avec une IA 
+- Historique des scores
+
 
 A terminer :
 

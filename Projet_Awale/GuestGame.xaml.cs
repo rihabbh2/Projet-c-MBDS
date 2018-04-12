@@ -36,6 +36,8 @@ namespace Projet_Awale
         }
         public ObservableCollection<HoleControl> Plateau1 { get; set; }
         public ObservableCollection<HoleControl> Plateau2 { get; set; }
+        public String path { get; set; }
+
 
         public GuestGame()
         {
@@ -53,6 +55,12 @@ namespace Projet_Awale
             {
                 Plateau1.Add(new HoleControl());
                 Plateau2.Add(new HoleControl());
+            }
+            path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Score.txt");
+            using (System.IO.StreamWriter file =
+                                 new System.IO.StreamWriter(@path, true))
+            {
+                file.WriteLine(DateTime.Now.ToString("MM/dd/yyyy h:mm tt"));
             }
             UdpClient listener = new UdpClient(1500);
             IPAddress target = IPAddress.Parse("127.0.0.1");
@@ -99,11 +107,6 @@ namespace Projet_Awale
                                     this.Score1 = this.Score1 + 3;
                                 }
 
-                                if (Score1 > 24)
-                                {
-                                    MessageBox.Show("Votre adversaire a gagné");
-                                    this.Close();
-                                }
                             }
                             else
                             {
@@ -171,6 +174,11 @@ namespace Projet_Awale
                             if (Score2 > 24)
                             {
                                 MessageBox.Show("Vous avez a gagné");
+                                using (System.IO.StreamWriter file =
+                      new System.IO.StreamWriter(@path, true))
+                                {
+                                    file.WriteLine("Online : Vous a gagné : " + Score1 + " vs " + Score2);
+                                }
                                 this.Close();
                             }
                             if (j == 5)
@@ -239,6 +247,11 @@ namespace Projet_Awale
                                     if (Score1 > 24)
                                     {
                                         MessageBox.Show("Votre adversaire a gagné");
+                                        using (System.IO.StreamWriter file =
+                      new System.IO.StreamWriter(@path, true))
+                                        {
+                                            file.WriteLine("Online : Votre adversaire a gagné :" + Score1 + " vs " + Score2);
+                                        }
                                         this.Close();
                                     }
                                     if (j == 0)

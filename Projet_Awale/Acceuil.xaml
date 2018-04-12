@@ -9,9 +9,11 @@
     <Grid>
         <TextBlock Text="Bienvenue" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="17,19,0,427" Height="23" Width="62"/>
         <TextBlock Text="{Binding Path=Nom , Mode=OneWay}" Width="380" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="90,9,0,0" Height="23" FontWeight="Bold" FontStyle="Italic" FontSize="20"/>
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Height="90" Margin="25,108,276,271" Width="191" Click="host">Heberger une partie</Button>
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Margin="279,108,22,271" Height="90" Width="191" Click="connect">Se connecter à une partie</Button>
+        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Height="90" Margin="25,108,276,271" Width="191" Click="host">Se connecter à une partie</Button>
+        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Margin="279,108,22,271" Height="90" Width="191" Click="connect">Heberger une partie</Button>
         <Button Margin="25,250,276,129" VerticalAlignment="Center" HorizontalAlignment="Center" Height="90" Width="191"  Click="Duo">Partie locale à deux</Button>
         <Button Margin="279,250,22,129" VerticalAlignment="Center" Height="90" Click="Ai">Partie locale solo</Button>
+        <Button Margin="152,369,149,10" VerticalAlignment="Center" Height="90" Click="historique">Historique</Button>
+
     </Grid>
 </Window>

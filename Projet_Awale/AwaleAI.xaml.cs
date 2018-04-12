@@ -43,6 +43,8 @@ namespace Projet_Awale
         }
         public ObservableCollection<HoleControl> Plateau1 { get; set; }
         public ObservableCollection<HoleControl> Plateau2 { get; set; }
+        public String path { get; set; }
+
 
         public AwaleAI()
         {
@@ -58,6 +60,12 @@ namespace Projet_Awale
             {
                 Plateau1.Add(new HoleControl());
                 Plateau2.Add(new HoleControl());
+            }
+            path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Score.txt");
+            using (System.IO.StreamWriter file =
+                                 new System.IO.StreamWriter(@path, true))
+            {
+                file.WriteLine(DateTime.Now.ToString("MM/dd/yyyy h:mm tt"));
             }
             this.DataContext = this;
 
@@ -97,6 +105,11 @@ namespace Projet_Awale
                         if (Score1 > 24)
                         {
                             MessageBox.Show("Vous avez gagné" + Score1 + " vs " + Score2);
+                            using (System.IO.StreamWriter file =
+                           new System.IO.StreamWriter(@path, true))
+                            {
+                                file.WriteLine("Vous avez gagné" + Score1 + " vs " + Score2);
+                            }
                             this.Close();
                         }
                         if (j == 0)
@@ -140,6 +153,11 @@ namespace Projet_Awale
                         if (Score2 > 24)
                         {
                             MessageBox.Show("L'ordinteur a gagné "+Score2 +" vs "+Score1);
+                            using (System.IO.StreamWriter file =
+                            new System.IO.StreamWriter(@path, true))
+                            {
+                                file.WriteLine("L'ordinteur a gagné " + Score2 + " vs " + Score1);
+                            }
                             this.Close();
                         }
                         if (j == 5)

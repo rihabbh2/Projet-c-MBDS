@@ -64,3 +64,5 @@ C:\Users\Ben Hamouda\Documents\GitHub\Projet-c-MBDS\Projet_Awale\obj\Debug\HostG
 C:\Users\Ben Hamouda\Documents\GitHub\Projet-c-MBDS\Projet_Awale\obj\Debug\HostGame.baml
 C:\Users\Ben Hamouda\Documents\GitHub\Projet-c-MBDS\Projet_Awale\obj\Debug\GuestGame.g.cs
 C:\Users\Ben Hamouda\Documents\GitHub\Projet-c-MBDS\Projet_Awale\obj\Debug\GuestGame.baml
+C:\Users\Ben Hamouda\Documents\GitHub\Projet-c-MBDS\Projet_Awale\obj\Debug\Historique.g.cs
+C:\Users\Ben Hamouda\Documents\GitHub\Projet-c-MBDS\Projet_Awale\obj\Debug\Historique.baml
