@@ -134,80 +134,84 @@ namespace Projet_Awale
                 byte[] msg = Encoding.ASCII.GetBytes(Me.SelectedIndex.ToString());
                 s.SendTo(msg, ep);
                 tour = false;
-        
+          
                 UdpClient listener = new UdpClient(2323);
                // IPAddress target = IPAddress.Parse("127.0.0.1");
                 IPEndPoint ep1= new IPEndPoint(target, 2323);
-
-                try
+                Task.Run(() =>
                 {
-                    while (tour == false)
+                    try
                     {
-
-                        byte[] bytes = listener.Receive(ref ep1);
-
-
-                        tour = true;
-
-                        String attack = Encoding.ASCII.GetString(bytes, 0, bytes.Length);
-                        int a;
-                        Int32.TryParse(attack, out a);
-                        int total2 = Plateau2[a].NbrBilles;
-                        Plateau2[a].Jouer();
-                        int b = -1;
-                        for (int k = total2; k > 0; k--)
+                        while (tour == false)
                         {
-                            a = a - 1;
-                            if (a > 0)
-                            {
-                                Plateau2[a].Distribuer();
-                            }
-                            else
-                            {
-                                b = b + 1;
-                                if (b < 6)
-                                {
-                                    Plateau1[b].Distribuer();
-                                    if (Plateau1[b].NbrBilles == 2)
-                                    {
-                                        Plateau1[b].NbrBilles = 0;
-                                        this.Score2 = this.Score2 + 2;
-                                    }
-                                    else if (Plateau1[b].NbrBilles == 3)
-                                    {
-                                        Plateau1[b].NbrBilles = 0;
-                                        this.Score2 = this.Score2 + 3;
-                                    }
 
-                                    if (Score2 > 24)
+                            byte[] bytes = listener.Receive(ref ep1);
+
+                            Dispatcher.Invoke(() =>
+                            {
+                                tour = true;
+
+                            String attack = Encoding.ASCII.GetString(bytes, 0, bytes.Length);
+                            int a;
+                            Int32.TryParse(attack, out a);
+                            int total2 = Plateau2[a].NbrBilles;
+                            Plateau2[a].Jouer();
+                            int b = -1;
+                            for (int k = total2; k > 0; k--)
+                            {
+                                a = a - 1;
+                                if (a > 0)
+                                {
+                                    Plateau2[a].Distribuer();
+                                }
+                                else
+                                {
+                                    b = b + 1;
+                                    if (b < 6)
                                     {
-                                        MessageBox.Show("Votre adversaire a gagné" + Score1 + " vs " + Score2);
-                                        using (System.IO.StreamWriter file =
-                           new System.IO.StreamWriter(@path, true))
+                                        Plateau1[b].Distribuer();
+                                        if (Plateau1[b].NbrBilles == 2)
                                         {
-                                            file.WriteLine("Online : Votre adversaire a gagné" + Score1 + " vs " + Score2);
+                                            Plateau1[b].NbrBilles = 0;
+                                            this.Score2 = this.Score2 + 2;
                                         }
-                                        this.Close();
+                                        else if (Plateau1[b].NbrBilles == 3)
+                                        {
+                                            Plateau1[b].NbrBilles = 0;
+                                            this.Score2 = this.Score2 + 3;
+                                        }
+
+                                        if (Score2 > 24)
+                                        {
+                                            MessageBox.Show("Votre adversaire a gagné" + Score1 + " vs " + Score2);
+                                            using (System.IO.StreamWriter file =
+                               new System.IO.StreamWriter(@path, true))
+                                            {
+                                                file.WriteLine("Online : Votre adversaire a gagné" + Score1 + " vs " + Score2);
+                                            }
+                                            this.Close();
+                                        }
+                                    }
+                                    if (j == 5)
+                                    {
+                                        i = 6;
+                                        j = -1;
                                     }
                                 }
-                                if (j == 5)
-                                {
-                                    i = 6;
-                                    j = -1;
-                                }
                             }
+                            });
                         }
-                    }
 
-                }
-                catch (Exception e1)
-                {
-                    Console.WriteLine(e1.ToString());
-                }
-                finally
-                {
-                    listener.Close();
-                }
+                    }
+                    catch (Exception e1)
+                    {
+                        Console.WriteLine(e1.ToString());
+                    }
+                    finally
+                    {
+                        listener.Close();
+                    }
+                });
             }
         
         }

@@ -29,41 +29,49 @@ namespace Projet_Awale
             UdpClient listener = new UdpClient(2323);
             IPAddress target = IPAddress.Parse("127.0.0.1");
             IPEndPoint ep = new IPEndPoint(target, 2323);
-
-            try
+            Task.Run(() =>
             {
-                while (done==false)
+                try
                 {
-                    Console.WriteLine("En attente d'une connexion");
-                    byte[] bytes = listener.Receive(ref ep);
+                    while (done == false)
+                    {
+                        Console.WriteLine("En attente d'une connexion");
+                        byte[] bytes = listener.Receive(ref ep);
 
-                    Console.WriteLine("Received broadcast from {0} :\n {1}\n",
-                        ep.ToString(),
-                        Encoding.ASCII.GetString(bytes, 0, bytes.Length));
-                    result = Encoding.ASCII.GetString(bytes, 0, bytes.Length);
+                        Console.WriteLine("Received broadcast from {0} :\n {1}\n",
+                            ep.ToString(),
+                            Encoding.ASCII.GetString(bytes, 0, bytes.Length));
+                        result = Encoding.ASCII.GetString(bytes, 0, bytes.Length);
 
-                    done = true;
-                  
-                } if (done == true)
-                {
-                    var windowhost = new HostGame(result);
-                    windowhost.Show();
-               //     this.Close();
+                        done = true;
+
+                    }
+                    if (done == true)
+                    {
+                        Dispatcher.Invoke(() =>
+                        {
+                            var windowhost = new HostGame(result);
+                            windowhost.Show();
+                        });
+                    
+                        //     this.Close();
+                    }
+
+
+
+
                 }
-
-               
-           
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
-            }
-            finally
-            {
-                listener.Close();
-            }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
+                finally
+                {
+                    listener.Close();
+                }
+            });
         }
+
 
 
     }
