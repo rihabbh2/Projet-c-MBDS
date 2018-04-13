@@ -14,7 +14,7 @@
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
         </ListBox>
-        <TextBlock Text="{Binding joueur1}" Margin="823,304,10,212"/>
+        <TextBlock Text="Vous" Margin="823,304,10,212"/>
         <TextBlock Text="{Binding Score1, Mode=TwoWay}" Margin="823,379,10,47" FontSize="48"/>
         <ListBox Name="Ennemy" ItemsSource="{Binding Plateau2}" HorizontalAlignment="Right" Width="800" SelectionChanged="ListBox2_SelectionChanged" Margin="0,2,0,312" Height="250">
             <ListBox.ItemsPanel>
@@ -23,7 +23,7 @@
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
         </ListBox>
-        <TextBlock Text="{Binding joueur2}" Margin="24,24,809,492"/>
+        <TextBlock Text="votre adversaire" Margin="24,24,809,492"/>
         <TextBlock Text="{Binding Score2, Mode=TwoWay}" Margin="24,94,809,332" FontSize="48"/>
         
     </Grid>

@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="Rejoindre" Height="300" Width="300">
     <Grid>
-        
+        <TextBlock Text="Dans l'attente d'une réponse... " Width="248" Margin="22,84,22,161" TextAlignment="Center" FontFamily="Lucida Calligraphy" FontSize="14"/>
+
     </Grid>
 </Window>

@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet_Awale"
         mc:Ignorable="d"
-        Title="Heberger" Height="300" Width="300">
+        Title="Bonne chance !" Height="300" Width="300">
     <Grid>
-        
+        <TextBlock Text="Bonne Partie ! " Width="248" Margin="22,84,22,161" TextAlignment="Center" FontFamily="Lucida Calligraphy" FontSize="14"/>
+
     </Grid>
 </Window>
