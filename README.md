@@ -14,5 +14,5 @@ En générale :
 
 - La partie est terminées lorsque un des joueurs à plus de la moitié des billes
 - Lors d'un partie en ligne, la personne qui rejoint la partie joue avec le plateau du haut.
-- Le nom des classe Héberger et Rejoindre ont été interchangés .
+- Le nom des classes Héberger et Rejoindre ont été interchangés .
 - Les ports 2323 et 1500 doivent être libres.
