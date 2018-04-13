@@ -4,13 +4,14 @@ Jeu Awale en c#
 Fait : 
 
 - Partie locale à 2 ;
-- Patie seule avec une IA 
-- Historique des scores
+- Partie seule avec une IA 
+- Consulter l'historique des scores
+- Heberger une partie
+- Rejoindre une partie
 
 
-A terminer :
+En générale : 
 
-- Partie à 2 en réseau (manque choix de l'adresse IP)
-
-
-Pour lancer une partie en réseau : un utilisateur doit d'abord cliquer sur "se connecter à une partie" , ensuite un autre sur heberger la partie (l'hergeur est celui qui commence la partie)
+- La partie est terminées lorsque un des joueurs à plus de la moitié des billes
+- Lors d'un partie en ligne, la personne qui rejoint la partie joue avec le plateau du haut.
+- Le nom des classe Héberger et Rejoindre ont été interchangés .
