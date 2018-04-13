@@ -21,13 +21,13 @@ namespace Projet_Awale
     /// </summary>
     public partial class Rejoindre : Window
     {
-        public Rejoindre()
+        public Rejoindre(string ip)
         {
             InitializeComponent();
             bool done = false;
             String result = "" ; 
             UdpClient listener = new UdpClient(2323);
-            IPAddress target = IPAddress.Parse("127.0.0.1");
+            IPAddress target = IPAddress.Parse(ip);
             IPEndPoint ep = new IPEndPoint(target, 2323);
             Task.Run(() =>
             {
@@ -50,7 +50,7 @@ namespace Projet_Awale
                     {
                         Dispatcher.Invoke(() =>
                         {
-                            var windowhost = new HostGame(result);
+                            var windowhost = new HostGame(ip);
                             windowhost.Show();
                         });
                     

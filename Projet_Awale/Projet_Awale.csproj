@@ -68,6 +68,9 @@
     <Compile Include="HostGame.xaml.cs">
       <DependentUpon>HostGame.xaml</DependentUpon>
     </Compile>
+    <Compile Include="IPaddress.xaml.cs">
+      <DependentUpon>IPaddress.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Rejoindre.xaml.cs">
       <DependentUpon>Rejoindre.xaml</DependentUpon>
     </Compile>
@@ -103,6 +106,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="HostGame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IPaddress.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -48,16 +48,19 @@ namespace Projet_Awale
         public ObservableCollection<HoleControl> Plateau1 { get; set; }
         public ObservableCollection<HoleControl> Plateau2 { get; set; }
         public String path { get; set; }
+        public String ip { get; set; }
 
 
-        public HostGame(string j2)
+
+        public HostGame(string ipa)
         {
             InitializeComponent();
+            ip = ipa;
             Joueur j1 = Gestion.getInstance().Joueur1;
           //  Joueur j2 = Gestion.getInstance().Joueur2;
             joueur1 = j1.Nom;
             Score1 = j1.Score;
-            joueur2 = j2;
+         //   joueur2 = j2;
             Score2 = 0;
             tour = true; 
             Plateau1 = new ObservableCollection<HoleControl>();
@@ -128,7 +131,7 @@ namespace Projet_Awale
                     }
                 }
                 Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-                IPAddress target = IPAddress.Parse("127.0.0.1");
+                IPAddress target = IPAddress.Parse(ip);
                 IPEndPoint ep = new IPEndPoint(target, 1500);
 
                 byte[] msg = Encoding.ASCII.GetBytes(Me.SelectedIndex.ToString());

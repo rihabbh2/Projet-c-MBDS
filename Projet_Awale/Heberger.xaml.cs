@@ -21,17 +21,17 @@ namespace Projet_Awale
     /// </summary>
     public partial class Heberger : Window
     {
-        public Heberger()
+        public Heberger(string ip)
         {
             InitializeComponent();
 
             Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            IPAddress target = IPAddress.Parse("127.0.0.1");
+            IPAddress target = IPAddress.Parse(ip);
             IPEndPoint ep = new IPEndPoint(target, 2323);
 
             byte[] msg = Encoding.ASCII.GetBytes("Test");
             s.SendTo(msg, ep);
-                    var windowhost = new GuestGame();
+                    var windowhost = new GuestGame(ip);
 
                     
                     windowhost.Show();

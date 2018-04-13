@@ -42,13 +42,13 @@ namespace Projet_Awale
 
         private void host(object sender, RoutedEventArgs e)
         {
-            var windowhost = new Heberger();
+            var windowhost = new IPaddress("1"); //new Heberger();
             windowhost.Show();
         }
 
         private void connect(object sender, RoutedEventArgs e)
         {
-            var windowC = new Rejoindre();
+            var windowC = new IPaddress("0");//new Rejoindre();
             windowC.Show();
         }
 

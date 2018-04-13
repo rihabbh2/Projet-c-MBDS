@@ -38,11 +38,13 @@ namespace Projet_Awale
         public ObservableCollection<HoleControl> Plateau1 { get; set; }
         public ObservableCollection<HoleControl> Plateau2 { get; set; }
         public String path { get; set; }
+        public String ip { get; set; }
 
 
-        public GuestGame()
+        public GuestGame(String ipa)
         {
             InitializeComponent();
+            ip = ipa;
             Joueur j1 = Gestion.getInstance().Joueur1;
             Joueur j2 = Gestion.getInstance().Joueur2;
             joueur1 = j1.Nom;
@@ -64,7 +66,7 @@ namespace Projet_Awale
                 file.WriteLine(DateTime.Now.ToString("MM/dd/yyyy h:mm tt"));
             }
             UdpClient listener = new UdpClient(1500);
-            IPAddress target = IPAddress.Parse("127.0.0.1");
+            IPAddress target = IPAddress.Parse(ip);
             IPEndPoint ep = new IPEndPoint(target, 1500);
             Task.Run(() => {
                 try
@@ -197,7 +199,7 @@ namespace Projet_Awale
                     }
                 }
                 Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-                IPAddress target1 = IPAddress.Parse("127.0.0.1");
+                IPAddress target1 = IPAddress.Parse(ip);
                 IPEndPoint ep1 = new IPEndPoint(target1, 2323);
 
                 byte[] msg = Encoding.ASCII.GetBytes(Ennemy.SelectedIndex.ToString());
@@ -207,7 +209,7 @@ namespace Projet_Awale
 
 
                 UdpClient listener = new UdpClient(1500);
-                IPAddress target = IPAddress.Parse("127.0.0.1");
+                IPAddress target = IPAddress.Parse(ip);
                 IPEndPoint ep = new IPEndPoint(target, 1500);
                 Task.Run(() =>
                 {
